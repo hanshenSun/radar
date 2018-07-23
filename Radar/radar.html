@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <style>
+
+    body { margin:0;position:fixed;top:0;right:0;bottom:0;left:0; }
+    select { position: absolute; left: 50px; top: 50px; }
+		p { position: absolute; left: 310px; top: 32px; }
+      
+  </style>
+</head>
+
+<body>
+  <script type="text/javascript">   
+
+    var fileName = "https://raw.githubusercontent.com/hanshenSun/d3_skillMatrix/master/CORE%20Tools%20Data%20-%20Info.csv";
+    var dataFields = ["Practice", "Project Type", "	Tool Type", "Phase"];
+    d3.csv(fileName, function(error,data){
+      var practice = d3.select("body")
+      	.append("select")
+      	.attr("id", "practiceSelector")
+      	.selectAll("option")
+      	.data(data)
+      	.enter()
+      	.append("option")
+      	.text(function(d) {return d.Practice;})
+      	.attr("value", function (d,i){return i;});
+      
+			var index = Math.round(Math.random() * data.length);
+			d3.select("#practiceSelector").property("selectedIndex", index);
+      
+	
+        
+
+d3.select("select")
+  .on("change",function(d){
+    var selected = d3.select("#practiceSelector").node().value;
+    
+   d3.select("body")
+				.append("p")
+				.data(data)
+				.text(function(d){ 
+					return data[selected]['Phase']; 
+				}) 
+    
+    
+    console.log( data[selected]['Phase'] );
+    //d3.select("#practiceSelector").text(selected);
+    update();
+        
+      
+    function update(){
+        d3.selectAll("p")
+            .data(data)
+            .text(function(d){
+                  return data[selected]['Phase']
+                  })
+    }
+      
+      })
+    })
+    
+    
+    
+
+  </script>
+</body>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <style>
+
+    body { margin:0;position:fixed;top:0;right:0;bottom:0;left:0; }
+		p { position: absolute; left: 310px; top: 32px; }
+      
+  </style>
+</head>
+
+<!-- Include Twitter Bootstrap and jQuery: -->
+<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"/>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+ 
+<!-- Include the plugin's CSS and JS: -->
+<script type="text/javascript" src="js/bootstrap-multiselect.js"></script>
+<link rel="stylesheet" href="css/bootstrap-multiselect.css" type="text/css"/>
+
+<body>
+<select id="example-xss" multiple="multiple">
+    <option value="1">&lt;script&gt;alert(1);&lt;/script&gt;</option>
+</select>
+    
+    
+    
+    
+<script type="text/javascript">  
+        $(document).ready(function() {
+        $('#example-xss').multiselect();
+    });
+</script>
+
+
+    
+
+</body>

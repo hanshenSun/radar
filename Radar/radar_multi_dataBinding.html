@@ -12,16 +12,25 @@
 
 
 <body>
+    <select name="specialStart">
+        <option value="Run">Run</option>
+        <option value="notRun">Pause</option>
+    </select>
     <div id= "practiceDropDown"></div>
     <div id= "ProjectTypeDropDown"></div>
     <div id= "toolTypeDropDown"></div>
     <div id= "PhaseDropDown"></div>
     
+    
   <script type="text/javascript">   
 
-    var fileName = "https://raw.githubusercontent.com/hanshenSun/d3_skillMatrix/master/CORE%20Tools%20Data%20-%20Info.csv";
+    var categoryName = "https://raw.githubusercontent.com/hanshenSun/d3_skillMatrix/master/CORE%20Tools%20Data%20-%20Info.csv";
+    var dataFile = "https://raw.githubusercontent.com/hanshenSun/d3_skillMatrix/master/CORE%20Tools%20Data.csv";
     var dataFields = ["Practice", "Project Type", "	Tool Type", "Phase"];
-    d3.csv(fileName, function(error,data){
+  
+    
+    
+    d3.csv(categoryName, function(error,data){
       var practice = d3.select("#practiceDropDown")
       	.append("select")
       	.attr("id", "practiceSelector")
@@ -66,37 +75,51 @@
         .attr("value", function(d,i){return i;});     
           
         
-d3.select("body")
-				.append("p")
-				.data(data)
-				.text(function(d){ 
-					return data[selected]['Practice']; 
-				})         
 
+        
 d3.select("select")
   .on("change",function(d){
-    var selected = d3.select("#practiceSelector").node().value;
+    var selected = d3.select("#practiceSelector").node().value;//retrieve the selected index
+    var selectedPractice = data[selected]['Practice'];
+
+    var selected = d3.select("#projectSelector").node().value;//retrieve the selected index
+    var selectedProjectType = data[selected]['Project Type'];
     
+    console.log("triggered")
+    console.log(selectedProjectType);
     
-    console.log( data[selected]['Practice'] );
-    console.log('Forensics,PLC,Renewal,Construction'.includes(data[selected]['Practice']));
-    //d3.select("#practiceSelector").text(selected);
-    update();
+    d3.csv(dataFile, function(error, spreadSheetData){
+        for (i = 0, len = spreadSheetData.length; i < len; i++){
+            var d = spreadSheetData[i];
+            var practiceData = d.Practice;
+            var projectTypeData = d["Project Type"];
+            
+            if (practiceData.includes(selectedPractice)){
+                
+                if (projectTypeData.includes(selectedProjectType)){
+                    
+                    console.log(d["Tool Name"]);
+                    }
+                                                
+                
+                
+            }
+
+             
+        }
+        });  
         
-      
-    function update(){
-        d3.selectAll("p")
-            .data(data)
-            .text(function(d){
-                  return data[selected]['Practice']
-                  })
-    }
-      
-      })
+    
+    })
+        
+
+        
+        
     })
     
     
     
+
 
   </script>
 </body>

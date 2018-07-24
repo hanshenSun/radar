@@ -22,14 +22,14 @@
     <div id= "PhaseDropDown"></div>
     <div id= "toolTypeDropDown"></div>    
     <div id= "PlatformDropDown"></div>
-    
+    <p>Output:</p>
     
   <script type="text/javascript">   
 
     var categoryName = "https://raw.githubusercontent.com/hanshenSun/radar/master/Radar/CORE%20Tools%20Data%20-%20Info.csv";
     var dataFile = "https://raw.githubusercontent.com/hanshenSun/d3_skillMatrix/master/CORE%20Tools%20Data.csv";
     var dataFields = ["Practice", "Project Type", "	Tool Type", "Phase"];
-  
+    var outputLog = [];
     
     
     d3.csv(categoryName, function(error,data){
@@ -126,9 +126,11 @@ d3.select("select")
                                 var formattedPhase = getPhaseInt(selectedPhase);
                                 if(phaseData.length == 1){
                                     console.log(d.Platform + "_" + d["Tool Name"]);
+                                    //outputLog.push(d.Platform + "_" + d["Tool Name"]);
                                 }
                                 else if (phaseData.includes("All") || phaseData.includes("")){
                                     console.log(d.Platform + "_" + d["Tool Name"]);
+                                    //outputLog.push(d.Platform + "_" + d["Tool Name"]);
                                 }
                                 else if (phaseData.length ==3){
                                     //console.log("this is a 3 digit phase");
@@ -136,29 +138,35 @@ d3.select("select")
                                     //check if in domain
                                     if(inRange(phaseData.charAt(0), phaseData.charAt(2), formattedPhase)){
                                         console.log(d.Platform + "_" + d["Tool Name"]);
+                                        //outputLog.push(d.Platform + "_" + d["Tool Name"]);
                                     }                    
                                 }
                             }
                         }
                     }
                 }
-            }
+            }  
         })
+      //writeOutput(d);
+})
+
     })
            
-    })
-           
-        
-
-
-        
+   
         
     })
     
     
+ 
+      
     
-    
-    
+function writeOutput(d){
+    d3.select("body")
+				.append("p")
+                .data(d)
+				.text(function(d){return d;})
+				} 
+   
 function inRange (start,end, value){
     for (i = start; i <=end; i++){
         if (i === value){

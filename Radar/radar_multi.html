@@ -64,22 +64,22 @@
         .append("option")
         .text(function(d){return d.Phase;})
         .attr("value", function(d,i){return i;});     
+  
         
-        
+d3.select("body")
+				.append("p")
+				.data(data)
+				.text(function(d){ 
+					return data[selected]['Practice']; 
+				})         
 
 d3.select("select")
   .on("change",function(d){
     var selected = d3.select("#practiceSelector").node().value;
     
-   d3.select("body")
-				.append("p")
-				.data(data)
-				.text(function(d){ 
-					return data[selected]['Project Type']; 
-				}) 
     
-    
-    console.log( data[selected]['Phase'] );
+    console.log( data[selected]['Practice'] );
+    console.log('Forensics,PLC,Renewal,Construction'.includes(data[selected]['Practice']));
     //d3.select("#practiceSelector").text(selected);
     update();
         
@@ -88,7 +88,7 @@ d3.select("select")
         d3.selectAll("p")
             .data(data)
             .text(function(d){
-                  return data[selected]['Phase']
+                  return data[selected]['Practice']
                   })
     }
       

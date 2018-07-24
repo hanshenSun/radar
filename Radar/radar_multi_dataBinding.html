@@ -13,18 +13,20 @@
 
 <body>
     <select name="specialStart">
+        <option value="">Pause</option>
         <option value="Run">Run</option>
-        <option value="notRun">Pause</option>
+        
     </select>
     <div id= "practiceDropDown"></div>
     <div id= "ProjectTypeDropDown"></div>
-    <div id= "toolTypeDropDown"></div>
     <div id= "PhaseDropDown"></div>
+    <div id= "toolTypeDropDown"></div>    
+    <div id= "PlatformDropDown"></div>
     
     
   <script type="text/javascript">   
 
-    var categoryName = "https://raw.githubusercontent.com/hanshenSun/d3_skillMatrix/master/CORE%20Tools%20Data%20-%20Info.csv";
+    var categoryName = "https://raw.githubusercontent.com/hanshenSun/radar/master/Radar/CORE%20Tools%20Data%20-%20Info.csv";
     var dataFile = "https://raw.githubusercontent.com/hanshenSun/d3_skillMatrix/master/CORE%20Tools%20Data.csv";
     var dataFields = ["Practice", "Project Type", "	Tool Type", "Phase"];
   
@@ -75,6 +77,15 @@
         .attr("value", function(d,i){return i;});     
           
         
+      var projectType = d3.select("#PlatformDropDown")
+        .append("select")
+        .attr("id", "platformSelector")
+        .selectAll("option")
+        .data(data)
+        .enter()
+        .append("option")
+        .text(function(d){return d.Platform;})
+        .attr("value", function(d,i){return i;});     
 
         
 d3.select("select")
@@ -84,22 +95,39 @@ d3.select("select")
 
     var selected = d3.select("#projectSelector").node().value;//retrieve the selected index
     var selectedProjectType = data[selected]['Project Type'];
+   
+    var selected = d3.select("#phaseSelector").node().value;//retrieve the selected index
+    var selectedPhase = data[selected]['Phase'];
     
-    console.log("triggered")
-    console.log(selectedProjectType);
+    var selected = d3.select("#toolSelector").node().value;//retrieve the selected index
+    var selectedToolType = data[selected]['Tool Type'];
+    
+    var selected = d3.select("#platformSelector").node().value;//retrieve the selected index
+    var selectedPlatform = data[selected]['Platform'];
+        
     
     d3.csv(dataFile, function(error, spreadSheetData){
         for (i = 0, len = spreadSheetData.length; i < len; i++){
             var d = spreadSheetData[i];
             var practiceData = d.Practice;
             var projectTypeData = d["Project Type"];
-            
-            if (practiceData.includes(selectedPractice)){
+            var phaseData = d.Phase;
+            var toolTypeData = d["Tool Type"]
+            var platformData = d.Platform;
+            if (practiceData.indexOf(selectedPractice)>=0 || practiceData==="All"){
                 
-                if (projectTypeData.includes(selectedProjectType)){
-                    
-                    console.log(d["Tool Name"]);
-                    }
+                if (projectTypeData.indexOf(selectedProjectType)>=0 || projectTypeData==="All"){
+                                       
+                    if (phaseData.includes(selectedPhase) || phaseData==="All"){
+                        //console.log(d);
+                        if(toolTypeData.indexOf(selectedToolType)>=0){
+                            //console.log(d);
+                            if(platformData.indexOf(selectedPlatform)>=0){
+                                console.log(d["Tool Name"]);
+                            }
+                        }
+                    }   
+                }
                                                 
                 
                 

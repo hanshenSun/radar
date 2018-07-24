@@ -107,45 +107,77 @@ d3.select("select")
         
     
     d3.csv(dataFile, function(error, spreadSheetData){
-        for (i = 0, len = spreadSheetData.length; i < len; i++){
-            var d = spreadSheetData[i];
+        spreadSheetData.forEach(function(d){
+            //var d = spreadSheetData[i];
             var practiceData = d.Practice;
             var projectTypeData = d["Project Type"];
             var phaseData = d.Phase;
             var toolTypeData = d["Tool Type"]
             var platformData = d.Platform;
-            if (practiceData.indexOf(selectedPractice)>=0 || practiceData==="All"){
+            if (practiceData.includes(selectedPractice) || practiceData==="All"){
                 
-                if (projectTypeData.indexOf(selectedProjectType)>=0 || projectTypeData==="All"){
-                                       
+                if (projectTypeData.includes(selectedProjectType) || projectTypeData==="All"){
+                    
                     if (phaseData.includes(selectedPhase) || phaseData==="All"){
-                        //console.log(d);
-                        if(toolTypeData.indexOf(selectedToolType)>=0){
-                            //console.log(d);
+                        
+                        if(toolTypeData.includes(selectedToolType)){
+                            
                             if(platformData.indexOf(selectedPlatform)>=0){
-                                console.log(d["Tool Name"]);
+                                var formattedPhase = getPhaseInt(selectedPhase);
+                                if(phaseData.length == 1){
+                                    console.log(d.Platform + "_" + d["Tool Name"]);
+                                }
+                                else if (phaseData.includes("All") || phaseData.includes("")){
+                                    console.log(d.Platform + "_" + d["Tool Name"]);
+                                }
+                                else if (phaseData.length ==3){
+                                    //console.log("this is a 3 digit phase");
+                                    //console.log(phaseData);
+                                    //check if in domain
+                                    if(inRange(phaseData.charAt(0), phaseData.charAt(2), formattedPhase)){
+                                        console.log(d.Platform + "_" + d["Tool Name"]);
+                                    }                    
+                                }
                             }
                         }
-                    }   
+                    }
                 }
-                                                
-                
-                
             }
+        })
+    })
+           
+    })
+           
+        
 
-             
+
+        
+        
+    })
+    
+    
+    
+    
+    
+function inRange (start,end, value){
+    for (i = start; i <=end; i++){
+        if (i === value){
+            return true;
         }
-        });  
-        
-    
-    })
-        
-
-        
-        
-    })
-    
-    
+        else{return false;}
+    }
+}    
+function getPhaseInt (selectedPhase){
+    if(selectedPhase.includes("Competition")){return 1;}
+    else if(selectedPhase.includes("Concept")){return 2;}
+    else if(selectedPhase.includes("Schematic")){return 3;}
+    else if(selectedPhase.includes("Design Development")){return 4;}
+    else if(selectedPhase.includes("Construction Documents")){return 5;}
+    else if(selectedPhase.includes("Construction Administration")){return 6;}
+    else if(selectedPhase.includes("Fabrication")){return 7;}
+    else if(selectedPhase.includes("Investigation")){return 8;}
+    //console.log(selectedPhase);
+}
     
 
 

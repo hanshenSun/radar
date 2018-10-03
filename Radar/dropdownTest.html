@@ -1,0 +1,135 @@
+<html>
+<head>
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<title>Untitled Document</title>
+</head>
+<body>
+
+<!--
+    <form>
+  <div>
+    <input type="checkbox" id="subscribeNews" name="subscribe" value="newsletter">
+    <label for="subscribeNews">Subscribe to newsletter?</label>
+      <input type="checkbox" id="subscribeNews" name="subscribe" value="newsletter">
+    <label for="subscribeNews">Subscribe to newsletter?</label>
+      <input type="checkbox" id="subscribeNews" name="subscribe" value="newsletter">
+    <label for="subscribeNews">Subscribe to newsletter?</label>
+      
+  </div>
+  <div>
+    <button type="submit">Subscribe</button>
+  </div>
+</form>
+    
+  
+    <fieldset>
+  <legend>Choose your interests</legend>
+  <div>
+    <input type="checkbox" id="coding" name="interest[]" value="coding">
+    <label for="coding">Coding</label>
+  </div>
+  <div>
+    <input type="checkbox" id="music" name="interest[]" value="music">
+    <label for="music">Music</label>
+  </div>
+</fieldset>
+    
+  
+-->
+        
+<fieldset>
+  <legend>Choose your Practice</legend>
+    <div>
+      <input type="checkbox" id="Sustainability" name="Sustainability" value="Sustainability">
+      <label for="Sustainability">Sustainability </label>
+    
+      <input type="checkbox" id="Structures" name="Structures" value="Structures">
+      <label for="Structures">Structures </label>
+        
+      <input type="checkbox" id="Renewal" name="Renewal" value="Renewal">
+      <label for="Renewal">Renewal </label>
+        
+      <input type="checkbox" id="PLC" name="PLC" value="PLC">
+      <label for="PLC">PLC </label>
+        
+      <input type="checkbox" id="Construction" name="Construction" value="Construction">
+      <label for="Construction">Construction </label>
+        
+      <input type="checkbox" id="Forensics" name="Forensics" value="Forensics">
+      <label for="Forensics">Forensics </label>
+        
+      <input type="checkbox" id="Applied Science" name="Applied Science" value="Applied Science">
+      <label for="Applied Science">Applied Science </label>
+        
+      <input type="checkbox" id="Transportation" name="Transportation" value="Transportation">
+      <label for="Transportation">Transportation </label>
+        
+      <input type="checkbox" id="Protective Design" name="Protective Design" value="Protective Design">
+      <label for="Protective Design">Protective Design </label>
+        
+    </div>
+    
+    
+  </fieldset>
+    <div id= "ProjectTypeDropDown"></div>
+    <svg></svg>
+    <p id=result> checked</p>
+    
+<script type="text/javascript">
+    
+    var sustainabilityCheckbox = document.querySelector('input[value="Sustainability"]');    
+    var structuresCheckbox = document.querySelector('input[value="Structures"]');  
+    var renewalCheckbox = document.querySelector('input[value="Renewal"]');  
+    var PLCCheckbox = document.querySelector('input[value="PLC"]');  
+    var constructionCheckbox = document.querySelector('input[value="Construction"]');  
+    var forensicsCheckbox = document.querySelector('input[value="Forensics"]');  
+    var appliedScienceCheckbox = document.querySelector('input[value="Applied Science"]');  
+    var transportationCheckbox = document.querySelector('input[value="Transportation"]');  
+    var protectiveDesignCheckbox = document.querySelector('input[value="Protective Design"]');  
+    
+    
+    var sustainabilityResult = false;
+    if (sustainabilityCheckbox.checked){ sustainabilityResult = true; }
+    sustainabilityCheckbox.onchange = function()
+    {         
+        if (sustainabilityCheckbox.checked) { sustainabilityResult = true; }
+        else{sustainabilityResult = false; }
+        console.log(sustainabilityResult);
+    }
+    
+    
+    var dataLink = "radar data_clean.csv";
+    
+    d3.csv(dataLink, function(data){
+        var projectType = d3.select("#ProjectTypeDropDown")
+        .append("text")
+        .selectAll("text")
+        .data(data)
+        .enter()
+        .append("div")
+        .text(function(d)
+        {
+            var susData = d["Practice"];
+            console.log(sustainabilityResult);
+            if (sustainabilityCheckbox.checked)
+            {
+                console.log("ss")
+                return d["Tool Name"];
+            }
+            
+        });
+    })
+
+  
+    
+    
+    
+    
+</script>
+    
+</body>
+</html>
+
+
+
+

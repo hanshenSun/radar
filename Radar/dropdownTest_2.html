@@ -1,0 +1,289 @@
+<html>
+<head>
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<title>Untitled Document</title>
+</head>
+    
+<style>
+
+	body { font: 12px Arial;}
+
+    text { margin: 10px}
+    
+    div {
+  margin: 10px;
+}
+
+</style>
+    
+<body>
+
+<!--
+    <form>
+  <div>
+    <input type="checkbox" id="subscribeNews" name="subscribe" value="newsletter">
+    <label for="subscribeNews">Subscribe to newsletter?</label>
+      <input type="checkbox" id="subscribeNews" name="subscribe" value="newsletter">
+    <label for="subscribeNews">Subscribe to newsletter?</label>
+      <input type="checkbox" id="subscribeNews" name="subscribe" value="newsletter">
+    <label for="subscribeNews">Subscribe to newsletter?</label>
+      
+  </div>
+  <div>
+    <button type="submit">Subscribe</button>
+  </div>
+</form>
+    
+  
+    <fieldset>
+  <legend>Choose your interests</legend>
+  <div>
+    <input type="checkbox" id="coding" name="interest[]" value="coding">
+    <label for="coding">Coding</label>
+  </div>
+  <div>
+    <input type="checkbox" id="music" name="interest[]" value="music">
+    <label for="music">Music</label>
+  </div>
+</fieldset>
+    
+  
+-->
+        
+<fieldset>
+  <legend>Choose your Practice</legend>
+    <div>
+      <input type="checkbox" id="Sustainability" name="Sustainability" value="Sustainability">
+      <label for="Sustainability">Sustainability </label>
+    
+      <input type="checkbox" id="Structures" name="Structures" value="Structures">
+      <label for="Structures">Structures </label>
+        
+      <input type="checkbox" id="Renewal" name="Renewal" value="Renewal">
+      <label for="Renewal">Renewal </label>
+        
+      <input type="checkbox" id="PLC" name="PLC" value="PLC">
+      <label for="PLC">PLC </label>
+        
+      <input type="checkbox" id="Construction" name="Construction" value="Construction">
+      <label for="Construction">Construction </label>
+        
+      <input type="checkbox" id="Forensics" name="Forensics" value="Forensics">
+      <label for="Forensics">Forensics </label>
+        
+      <input type="checkbox" id="Applied Science" name="Applied Science" value="Applied Science">
+      <label for="Applied Science">Applied Science </label>
+        
+      <input type="checkbox" id="Transportation" name="Transportation" value="Transportation">
+      <label for="Transportation">Transportation </label>
+        
+      <input type="checkbox" id="Protective Design" name="Protective Design" value="Protective Design">
+      <label for="Protective Design">Protective Design </label>
+        
+    </div>
+    
+    
+  <legend>Choose your project type</legend>
+    <div>
+      <input type="checkbox" id="Steel" name="Steel" value="Steel">
+      <label for="Steel">Steel </label>
+    
+      <input type="checkbox" id="Concrete" name="Concrete" value="Concrete">
+      <label for="Concrete">Concrete </label>
+        
+      <input type="checkbox" id="Timber" name="Timber" value="Timber">
+      <label for="Timber">Timber </label>
+        
+      <input type="checkbox" id="Super Tall" name="Super Tall" value="Super Tall">
+      <label for="PLC">PLC </label>
+        
+        
+    </div>
+    
+    
+  <legend>Choose your phase</legend>
+    <div>
+      <input type="checkbox" id="Competition" name="Competition" value="Competition">
+      <label for="Competition">Competition </label>
+    
+      <input type="checkbox" id="Concept Design" name="Concept Design" value="Concept Design">
+      <label for="Concept Design">Concept Design </label>
+        
+      <input type="checkbox" id="Schematic Design" name="Schematic Design" value="Schematic Design">
+      <label for="Schematic Design">Schematic Design </label>
+        
+      <input type="checkbox" id="Design Development" name="Design Development" value="Design Development">
+      <label for="Design Development">Design Development </label>
+        
+      <input type="checkbox" id="Construction Document" name="Construction Document" value="Construction Document">
+      <label for="Construction Document">Construction Document </label>
+        
+      <input type="checkbox" id="Construction Administration" name="Construction Administration" value="Construction Administration">
+      <label for="Construction Administration">Construction Administration </label>
+        
+      <input type="checkbox" id="Fabrication" name="Fabrication" value="Fabrication">
+      <label for="Fabrication">Fabrication </label>
+        
+      <input type="checkbox" id="Investigation" name="Investigation" value="Investigation">
+      <label for="Investigation">Investigation </label>
+    </div>
+    
+    
+  <legend>Choose your platform</legend>
+    <div>
+      <input type="checkbox" id="Web" name="Web" value="Web">
+      <label for="Web">Web </label>
+    
+      <input type="checkbox" id="Tekla" name="Tekla" value="Tekla">
+      <label for="StrucTeklatures">Tekla </label>
+        
+      <input type="checkbox" id="Konstru" name="Konstru" value="Konstru">
+      <label for="Konstru">Konstru </label>
+        
+      <input type="checkbox" id="CSI Toolbox" name="CSI Toolbox" value="CSI Toolbox">
+      <label for="CSI Toolbox">CSI Toolbox </label>
+        
+      <input type="checkbox" id="Grasshopper" name="Grasshopper" value="Grasshopper">
+      <label for="Grasshopper">Grasshopper </label>
+        
+      <input type="checkbox" id="Revit" name="Revit" value="Revit">
+      <label for="Revit">Revit </label>
+        
+    </div>
+    
+    
+    <legend>Choose your tool type</legend>
+    <div>
+      <input type="checkbox" id="Visualization" name="Visualization" value="Visualization">
+      <label for="Visualization">Visualization </label>
+    
+      <input type="checkbox" id="Modeling" name="Modeling" value="Modeling">
+      <label for="Modeling">Modeling </label>
+        
+      <input type="checkbox" id="Interoperability" name="Interoperability" value="Interoperability">
+      <label for="Interoperability">Interoperability </label>
+        
+      <input type="checkbox" id="Verification" name="Verification" value="Verification">
+      <label for="Verification">Verification </label>
+        
+      <input type="checkbox" id="Analysis" name="Analysis" value="Analysis">
+      <label for="Analysis">Analysis </label>
+        
+      <input type="checkbox" id="Design" name="Design" value="Design">
+      <label for="Design">Design </label>
+        
+    </div>
+    
+    
+  </fieldset>
+    <div id= "ProjectTypeDropDown"></div>
+    
+<script type="text/javascript">
+    
+    var sustainabilityCheckbox = document.querySelector('input[value="Sustainability"]');    
+    var structuresCheckbox = document.querySelector('input[value="Structures"]');  
+    var renewalCheckbox = document.querySelector('input[value="Renewal"]');  
+    var PLCCheckbox = document.querySelector('input[value="PLC"]');  
+    var constructionCheckbox = document.querySelector('input[value="Construction"]');  
+    var forensicsCheckbox = document.querySelector('input[value="Forensics"]');  
+    var appliedScienceCheckbox = document.querySelector('input[value="Applied Science"]');  
+    var transportationCheckbox = document.querySelector('input[value="Transportation"]');  
+    var protectiveDesignCheckbox = document.querySelector('input[value="Protective Design"]');  
+    
+    var dataLink = "radar data_clean.csv";
+    
+    
+    var sustainabilityResult = false;
+    if (sustainabilityCheckbox.checked){ sustainabilityResult = true; }
+    
+    
+    sustainabilityCheckbox.onchange = function()
+    { 
+        
+        if (sustainabilityCheckbox.checked) 
+        { 
+            d3.csv(dataLink, function(data)
+            {
+                var projectType = d3.select("#ProjectTypeDropDown")
+                .selectAll("text")
+                .data(data)
+                .enter()
+                .append("div")
+                .attr("id", "toolName")
+                .text(function(d) { if (sustainabilityCheckbox.checked && d["Practice"].includes("Sustainability")) { return d["Tool Name"]; } });
+            })
+        }
+        else { d3.selectAll("#toolName").remove(); } }
+    
+    
+    
+    structuresCheckbox.onchange = function()
+    { 
+        if (structuresCheckbox.checked) 
+        { 
+            d3.csv(dataLink, function(data)
+            {
+                var projectType = d3.select("#ProjectTypeDropDown")
+                .selectAll("text")
+                .data(data)
+                .enter()
+                .append("div")
+                .attr("id", "toolName")
+                .text(function(d) { if (structuresCheckbox.checked && d["Practice"].includes("Structure")) { return d["Tool Name"]; } });
+            })
+        }
+        else { d3.selectAll("#toolName").remove(); } }
+    
+    
+    
+    renewalCheckbox.onchange = function()
+    { 
+        if (renewalCheckbox.checked) 
+        { 
+            d3.csv(dataLink, function(data)
+            {
+                var projectType = d3.select("#ProjectTypeDropDown")
+                .selectAll("text")
+                .data(data)
+                .enter()
+                .append("div")
+                .attr("id", "toolName")
+                .text(function(d) { if (renewalCheckbox.checked && d["Practice"].includes("Renewal")) { return d["Tool Name"]; } });
+            })
+        }
+        else { d3.selectAll("#toolName").remove(); } }
+    
+    
+    
+    PLCCheckbox.onchange = function()
+    { 
+        if (PLCCheckbox.checked) 
+        { 
+            d3.csv(dataLink, function(data)
+            {
+                var projectType = d3.select("#ProjectTypeDropDown")
+                .selectAll("text")
+                .data(data)
+                .enter()
+                .append("div")
+                .attr("id", "toolName")
+                .text(function(d) { if (PLCCheckbox.checked && d["Practice"].includes("PLC")) { return d["Tool Name"]; } });
+            })
+        }
+        else { d3.selectAll("#toolName").remove(); } }
+    
+    
+
+  
+    
+    
+    
+    
+</script>
+    
+</body>
+</html>
+
+
+
+
